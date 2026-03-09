@@ -8,6 +8,15 @@ The platform analyzes workload patterns using **Machine Learning** to provide ea
 
 ---
 
+---
+
+## 🎥 Demo Video of the product
+
+https://drive.google.com/file/d/1vdK-cbobhquHrB9IvcyrFRS9qf1WnptB/view?usp=drivesdk
+
+---
+
+
 ## 🚨 Problem
 
 Gig workers often experience:
@@ -155,13 +164,6 @@ http://localhost:3000
 ✔ Interactive dashboard
 ✔ ML model integration
 
----
-
-## 🎥 Demo Video of the product
-
-https://drive.google.com/file/d/1vdK-cbobhquHrB9IvcyrFRS9qf1WnptB/view?usp=drivesdk
-
----
 
 ## 🌟 Future Improvements
 
