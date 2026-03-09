@@ -183,7 +183,7 @@ function BeyondLimitCard({ extraWork, extraPayout, t }) {
   );
 }
 
-
+// ─────────────────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [result,       setResult]       = useState(null);
   const [loading,      setLoading]      = useState(false);
@@ -235,7 +235,7 @@ export default function Dashboard() {
 
   useEffect(() => { refreshHistory(); }, []);
 
- 
+
   const handleResult = (data, responseMs) => {
     setResult(data);
     setLoading(false);
@@ -247,7 +247,7 @@ export default function Dashboard() {
     const r = (data.risk_level ?? "").toUpperCase();
     const s = data.burnout_score ?? 0;
 
-
+  
     refreshHistory();
 
     addToast(
@@ -275,7 +275,14 @@ export default function Dashboard() {
   const handleBreak = () => {
     setShowWarning(false);
     setPendingPayload(null);
-    addToast("Break Recommended", "Rest is important. Your current risk level has been logged.", "MEDIUM");
+    const r = (result?.risk_level ?? "").toUpperCase();
+    if (r === "LOW") {
+      addToast("Keep It Up! 🎉", "Your burnout risk is low — great work maintaining a healthy pace!", "LOW");
+    } else if (r === "MEDIUM") {
+      addToast("Noted 👍", "Stay mindful of your workload. Small breaks go a long way.", "MEDIUM");
+    } else {
+      addToast("Break Recommended ☕", "Rest is important. Your risk level has been logged.", "HIGH");
+    }
   };
 
 
@@ -312,13 +319,18 @@ export default function Dashboard() {
       {!systemOnline && <OfflineOverlay />}
 
       {showWarning && (
-        <BurnoutWarningModal formData={formData} onBreak={handleBreak} onContinue={handleContinue} />
+        <BurnoutWarningModal
+          formData={formData}
+          riskLevel={result?.risk_level ?? "HIGH"}
+          onBreak={handleBreak}
+          onContinue={handleContinue}
+        />
       )}
       {showReport && (
         <ReportCard score={score} riskLevel={risk} formData={formData} workerInfo={workerInfo} onClose={() => setShowReport(false)} />
       )}
 
- 
+
       <header style={{
         borderBottom: `1px solid ${systemOnline ? T.headerBdr : "#ef444440"}`,
         background: systemOnline ? T.headerBg : "#0d0000",

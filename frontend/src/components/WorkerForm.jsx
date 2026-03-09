@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { predictBurnout, parseNaturalLanguage } from "../services/api";
 
-
 const PROFILES = [
   { label: "— Custom Input —",     value: "custom",    data: null },
   { label: "🚗  Ride Share Driver", value: "rideshare", data: { hours_worked: 68, rating: 4.1, jobs_completed: 32, days_without_break: 14, stress_level: 7 } },
@@ -148,7 +147,8 @@ export default function WorkerForm({
       const result     = await predictBurnout(payload);
       const responseMs = Date.now() - t0;
 
-      if (result.burnout_warning && onBurnoutWarning) {
+
+      if (onBurnoutWarning) {
         onBurnoutWarning(payload, { ...result, responseMs });
       } else {
         onResult(result, responseMs, payload);
