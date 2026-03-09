@@ -157,9 +157,9 @@ http://localhost:3000
 
 ---
 
-## 🎥 Demo
+## 🎥 Demo Video of the product
 
-(Add your demo video link here)
+https://drive.google.com/file/d/1vdK-cbobhquHrB9IvcyrFRS9qf1WnptB/view?usp=drivesdk
 
 ---
 
