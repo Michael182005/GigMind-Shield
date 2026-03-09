@@ -1,0 +1,5 @@
+ axios 
+chart.js 
+tailwindcss 
+postcss 
+autoprefixer
